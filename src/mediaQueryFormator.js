@@ -1,17 +1,19 @@
-import { hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, updateObj, updateCss } from './utils';
+import { hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, updateObj, updateCss, getSelector } from './utils';
 
 let mediaQueries = {}
 let count = 0;
 let key = '';
 let style = '';
 let keys = '';
+let subKeys = [];
 let needReturn = false;
 let initialized = false;
 
 let mediaQueryFormator = (line)=>{
     if (!initialized){
         initialized = true;
-        mediaQueries = {}
+        mediaQueries = {};
+        subKeys = [];
     }
     if (hasMediaQuery(line)){
         key = line.split('{')[0];
@@ -26,6 +28,7 @@ let mediaQueryFormator = (line)=>{
             let styleObj = parseStyle(style);
             keys = keys.split(',');
             keys.forEach(str=>{
+                subKeys.push(getSelector(str)[0]);
                 mediaQueries[key] = updateCss(mediaQueries[key], str, styleObj, true);
             })
             count -= 1;
@@ -39,7 +42,11 @@ let mediaQueryFormator = (line)=>{
         needReturn = false;
         key = '';
         initialized = false;
-        return mediaQueries;
+        let obj = {
+            data: mediaQueries,
+            subKeys: subKeys
+        }
+        return obj;
     }
 }
 

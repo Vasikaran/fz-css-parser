@@ -101,6 +101,11 @@
             }
         }
     },
+    "__mediaKeys_": {
+        ".div-child": ["@media only screen and (max-width:64em)"],
+        ".div": ["@media only screen and (max-width:64em)"],
+        "h2": ["@media only screen and (max-width:64em)"]
+    },
     ".div": {
         "background-color": "red",
         "color": "brown",

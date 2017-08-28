@@ -10,7 +10,8 @@ let formator = (css)=>{
     let formatedObj = {
         __common_: {},
         __keyFramesKeys_: {},
-        __keyFrames_: {}
+        __keyFrames_: {},
+        __mediaKeys_: {}
     };
     let mediaQueries = {};
     let isMedia = false;
@@ -23,9 +24,19 @@ let formator = (css)=>{
                 if (!isMedia){
                     isMedia = true;
                 }
-                let data = mediaQueryFormator(line);
-                if (data){
+                let result = mediaQueryFormator(line);
+                if (result){
+                    let { data, subKeys } = result;
                     let [ mediaKey ] = Object.keys(data);
+                    subKeys.forEach(subKey=>{
+                        if (formatedObj['__mediaKeys_'][subKey]){
+                            if (formatedObj['__mediaKeys_'][subKey].indexOf(mediaKey) === -1){
+                                formatedObj['__mediaKeys_'][subKey].push(mediaKey);
+                            }
+                        }else{
+                            formatedObj['__mediaKeys_'][subKey] = [mediaKey];
+                        }
+                    })
                     if (mediaQueries[mediaKey]){
                         let obj = data[mediaKey];
                         let subStyles = Object.keys(mediaQueries[mediaKey]);
