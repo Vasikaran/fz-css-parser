@@ -1,0 +1,164 @@
+.div, .div-child, div{
+    background-color: red;
+}
+
+.div, .div-child{
+    color: red;
+}
+
+div{
+    background: blue;
+}
+
+*{
+    margin: 0;
+}
+
+.div{
+    color: brown;
+}
+
+.div-child{
+    color: white;
+}
+
+@media only screen and (max-width:64em){
+    .div-child{
+        background-color: gray;
+        color: black;
+    }
+}
+
+
+.div:active{
+    border: 2px solid black;
+}
+
+@media only screen and (max-width:64em){
+    .div
+    {
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        min-width:90px;
+    }
+}
+
+@media only screen and (max-width:64em){
+    .div h1, h2
+    {
+        display: none;
+    }
+}
+
+
+.div+.div{
+    background-image: url('/app/image.png');
+}
+
+
+[hidden],template {
+    display: none
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+::selection {
+    background-color: #b3d4fc;
+    color: #000;
+    text-shadow: none
+}
+
+a:hover {
+    outline-width: 0
+}
+
+[type=reset],[type=submit],button,html [type=button] {
+    -webkit-appearance: button
+}
+
+[type=checkbox],[type=radio] {
+    padding: 0
+}
+
+::-webkit-inner-spin-button,::-webkit-outer-spin-button {
+    height: auto
+}
+
+[tabindex],a,area,button,input,label,select,textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation
+}
+
+[hidden][aria-hidden=false]:focus {
+    clip: auto
+}
+
+.breadcrumbs li {
+    display: inline;
+    color: #888a88;
+    text-transform: uppercase
+}
+
+.bounceBox {
+    -webkit-animation-name: bounce;
+}
+
+.pulseBox{
+    -webkit-animation-name: pulse;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0
+    }
+}
+
+.breadcrumbs li:not(:last-child):after {
+    margin-right: .4rem;
+    margin-left: .3rem;
+    content: ' ⁄ '
+}
+
+.radio [type=radio]:checked+.radio__label .radio--faux:after,.radio [type=radio]:checked~.radio--faux:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.radio [type=radio]:disabled+.radio--faux,.radio [type=radio]:disabled+.radio__label .radio--faux,.radio [type=radio]:disabled~.radio--faux {
+    background-color: #f6f6f6
+}
