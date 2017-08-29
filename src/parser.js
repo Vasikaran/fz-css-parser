@@ -22,7 +22,7 @@ export default class cssParser{
                 if (isObject(data)){
                     str += this.objToStr(data, key, ignoreKeys, isSubStyle);
                 }else if (isString(data)){
-                    str += isSubStyle ? '\t' : 
+                    str += isSubStyle ? '\t' : '';
                     str += '\t' + key + ':' + data + ';\n';
                 }
             }
