@@ -115,4 +115,12 @@ let hasKeyFrame = (line)=>{
     return hasValue(line, 'keyframes');
 }
 
-export { hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, isStyle, getSelector, updateObj, updateCss, updateSelectors, isUnwantedLine, hasKeyFrame };
+let isObject = (data)=>{
+    return data && data.toString() === '[object Object]' ? true : false;
+}
+
+let isString = (data)=>{
+    return data && typeof data === 'string' ? true : false;
+}
+
+export { isString, isObject, hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, isStyle, getSelector, updateObj, updateCss, updateSelectors, isUnwantedLine, hasKeyFrame };

@@ -59,7 +59,7 @@ let formator = (css)=>{
                 let result = keyFrameFormator(line);
                 if (result){
                     let { key, object } = result;
-                    formatedObj['__keyFrames_'][key] = Object.assign(object);
+                    formatedObj['__keyFrames_'][key] = object[key];
                     isKeyFrame = false;
                 }
             }else if (hasOpenCurly(line) && !isMedia && !isKeyFrame){
@@ -69,10 +69,15 @@ let formator = (css)=>{
                 let keys = key.split(',');
                 keys.forEach(cName=>{
                     if (styleObj['-webkit-animation-name']){
-                        let [ name, selector ] = getSelector(cName);
-                        formatedObj['__keyFramesKeys_'][name] = {};
-                        formatedObj['__keyFramesKeys_'][name]['name'] = styleObj['-webkit-animation-name'];
-                        formatedObj['__keyFramesKeys_'][name]['__selectors'] = selector;
+                        let [ name ] = getSelector(cName);
+                        let val = styleObj['-webkit-animation-name'];
+                        if (!formatedObj['__keyFramesKeys_'][name]){
+                            formatedObj['__keyFramesKeys_'][name] = [val];
+                        }else{
+                            if (formatedObj['__keyFramesKeys_'][name].indexOf(val) === -1){
+                                formatedObj['__keyFramesKeys_'][name].push(val);
+                            }
+                        }
                     }
                     formatedObj = updateCss(formatedObj, cName, styleObj);
                 })

@@ -3,6 +3,17 @@ const fs = require('fs');
 
 let css = fs.readFileSync('./sample.css').toString();
 
-let parsedCss = cssParser(css);
+let parsedCss = new cssParser(css);
 
-fs.writeFileSync('./style.json', JSON.stringify(parsedCss));
+// fs.writeFileSync('./style.json', JSON.stringify(parsedCss.getAST()));
+
+
+let data = '';
+
+data += parsedCss.getValue('div');
+
+data += parsedCss.getValue('bounceBox');
+
+data += parsedCss.getCommon();
+
+fs.writeFileSync('./app.css', data, 'utf-8');

@@ -44,7 +44,7 @@ div{
     }
 }
 
-@media only screen and (max-width:64em){
+@media only screen and (max-width:48em){
     .div h1, h2
     {
         display: none;

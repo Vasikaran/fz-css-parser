@@ -1,0 +1,125 @@
+.div {
+    background-color: red;
+    color: brown;
+}
+.div:active {
+    border: 2px solid black;
+}
+.div + .div {
+    background-image: url('/app/image.png');
+}
+
+@media only screen and (max-width: 64em) {
+    .div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 90px;
+    }
+}
+
+@media only screen and (max-width: 48em) {
+    .div h1 {
+        display: none;
+    }
+}
+.bounceBox {
+    -webkit-animation-name: bounce;
+}
+@-webkit-keyframes bounce {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+div {
+    background-color: red;
+    background: blue;
+}
+* {
+    margin: 0;
+}
+[hidden] {
+    display: none;
+}
+template {
+    display: none;
+}
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+::selection {
+    background-color: #b3d4fc;
+    color: #000;
+    text-shadow: none;
+}
+a {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+a:hover {
+    outline-width: 0;
+}
+[type=reset] {
+    -webkit-appearance: button;
+}
+[type=submit] {
+    -webkit-appearance: button;
+}
+button {
+    -webkit-appearance: button;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+html [type=button] {
+    -webkit-appearance: button;
+}
+[type=checkbox] {
+    padding: 0;
+}
+[type=radio] {
+    padding: 0;
+}
+::-webkit-inner-spin-button {
+    height: auto;
+}
+::-webkit-outer-spin-button {
+    height: auto;
+}
+[tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+area {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+input {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+label {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+select {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+[hidden][aria-hidden=false]:focus {
+    clip: auto;
+}
