@@ -10,9 +10,7 @@ let parsedCss = new cssParser(css);
 
 let data = '';
 
-data += parsedCss.getValue('div');
-
-data += parsedCss.getValue('bounceBox');
+data += parsedCss.getValue(['div', 'bounceBox', 'div-child']);
 
 data += parsedCss.getCommon();
 

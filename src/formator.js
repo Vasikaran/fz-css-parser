@@ -2,7 +2,7 @@ import mediaQueryFormator from './mediaQueryFormator';
 import keyFrameFormator from './keyFrameFormator';
 import { hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, updateCss, isUnwantedLine, hasKeyFrame, getSelector } from './utils';
 
-let formator = (css)=>{
+let formator = (css, parseSelector = true)=>{
     css = css.replace(/{/g, '{\n');
     css = css.replace(/{/g, '{\n');
     css = css.replace(/}/g, '\n}\n');
@@ -24,7 +24,7 @@ let formator = (css)=>{
                 if (!isMedia){
                     isMedia = true;
                 }
-                let result = mediaQueryFormator(line);
+                let result = mediaQueryFormator(line, parseSelector);
                 if (result){
                     let { data, subKeys } = result;
                     let [ mediaKey ] = Object.keys(data);
@@ -56,7 +56,7 @@ let formator = (css)=>{
                 if (!isKeyFrame){
                     isKeyFrame = true;
                 }
-                let result = keyFrameFormator(line);
+                let result = keyFrameFormator(line, parseSelector);
                 if (result){
                     let { key, object } = result;
                     formatedObj['__keyFrames_'][key] = object[key];
@@ -79,7 +79,7 @@ let formator = (css)=>{
                             }
                         }
                     }
-                    formatedObj = updateCss(formatedObj, cName, styleObj);
+                    formatedObj = updateCss(formatedObj, cName, styleObj, parseSelector);
                 })
                 key = '';
                 style = '';

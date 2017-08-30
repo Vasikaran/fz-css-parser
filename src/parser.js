@@ -1,7 +1,7 @@
 import minify from 'fz-uglifycss';
 import formator from './formator';
 import { isObject, isString } from './utils';
-
+import optimizer from './optimizer';
 
 export default class cssParser{
     constructor(css){
@@ -95,21 +95,51 @@ export default class cssParser{
         return raw;
     }
 
-    getValue(selector, option = {isClass: true}){
-        if (option.isClass){
-            selector = '.' + selector;
-        }else if (option.isId){
-            selector = '#' + selector;
+    getValue(selectors, option = {}){
+        let css = '';
+        if (isString(selectors)){
+            selectors = [selectors];
         }
-        let value = this.ast[selector];
-        if (value){
-            let raw = this.getRaw(selector, value);
-            let medias = this.getMedia(selector);
-            let keyframes = this.getKeyFrames(selector);
-            return raw + medias + keyframes;
-        }else{
-            return false;
+        let { isClass = true, optimize = true } = option;
+        selectors.forEach(selector=>{
+            if (isClass){
+                selector = '.' + selector;
+            }else if (option.isId){
+                selector = '#' + selector;
+            }
+            let value = this.ast[selector];
+            if (value){
+                let raw = this.getRaw(selector, value);
+                let medias = this.getMedia(selector);
+                let keyframes = this.getKeyFrames(selector);
+                css += raw + medias + keyframes;
+            }
+        })
+        if (optimize){
+            let { media, keyFrame, style } = optimizer(css);
+            media = this.netedObjToStr(media);
+            keyFrame = this.netedObjToStr(keyFrame);
+            style = this.netedObjToStr(style);
+            css = style + media + keyFrame;
         }
+        return css;
+    }
+
+    netedObjToStr(obj, isSubStyle = false){
+        let str = '';
+        let keys = Object.keys(obj);
+        keys.forEach((key, count)=>{
+            let data = obj[key];
+            str += isSubStyle ? '\t' : '';
+            if (isObject(data)){
+                str +=  key + '{\n' + this.netedObjToStr(data, true);
+                str += isSubStyle ? '\n\t}\n' : '\n}\n';
+            }else if (isString(data)){
+                str += '\t' + key + ':' + data;
+                str += count === keys.length - 1 ? ';' : ';\n'
+            }
+        })
+        return str;
     }
 
     getCommon(){

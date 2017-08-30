@@ -69,24 +69,30 @@ let updateObj = (obj, key, value)=>{
     return obj;
 }
 
-let updateCss = (object, key, style, isMedia=false)=>{
-    let [cName, selector] = getSelector(key);
-    if (!isStyle(cName) && !isMedia){
-        let obj = object['__common_'];
-        if (selector && cName){
-            obj = updateSelectors(obj, cName, selector, style);
-        }else if(!cName && selector){
-            obj = updateObj(obj, selector, style);
+let updateCss = (object, key, style, isMedia=false, parseSelector)=>{
+    if (parseSelector){
+        let [cName, selector] = getSelector(key);
+        if (!isStyle(cName) && !isMedia){
+            let obj = object['__common_'];
+            if (selector && cName){
+                obj = updateSelectors(obj, cName, selector, style);
+            }else if(!cName && selector){
+                obj = updateObj(obj, selector, style);
+            }else{
+                obj = updateObj(obj, cName, style);
+            }
         }else{
-            obj = updateObj(obj, cName, style);
+            if (selector && cName){
+                object = updateSelectors(object, cName, selector, style);
+            }else{
+                if (key.replace(/\s+/, '') !== ''){
+                    object = updateObj(object, key, style);
+                }
+            }
         }
     }else{
-        if (selector && cName){
-            object = updateSelectors(object, cName, selector, style);
-        }else{
-            if (key.replace(/\s+/, '') !== ''){
-                object = updateObj(object, key, style);
-            }
+        if (key.replace(/\s+/, '') !== ''){
+            object = updateObj(object, key, style);
         }
     }
     return object;

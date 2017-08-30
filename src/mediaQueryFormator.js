@@ -9,7 +9,7 @@ let subKeys = [];
 let needReturn = false;
 let initialized = false;
 
-let mediaQueryFormator = (line)=>{
+let mediaQueryFormator = (line, parseSelector)=>{
     if (!initialized){
         initialized = true;
         mediaQueries = {};
@@ -29,7 +29,7 @@ let mediaQueryFormator = (line)=>{
             keys = keys.split(',');
             keys.forEach(str=>{
                 subKeys.push(getSelector(str)[0]);
-                mediaQueries[key] = updateCss(mediaQueries[key], str, styleObj, true);
+                mediaQueries[key] = updateCss(mediaQueries[key], str, styleObj, true, parseSelector);
             })
             count -= 1;
             keys = '';

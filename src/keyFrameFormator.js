@@ -9,7 +9,7 @@ let keys = '';
 let needReturn = false;
 let initialized = false;
 
-let keyFrameFormator = (line)=>{
+let keyFrameFormator = (line, parseSelector)=>{
     if (!initialized){
         initialized = true;
         keyFrames = {}
@@ -31,7 +31,7 @@ let keyFrameFormator = (line)=>{
             let styleObj = parseStyle(style);
             keys = keys.split(',');
             keys.forEach(str=>{
-                keyFrames[key] = updateCss(keyFrames[key], str, styleObj, true);
+                keyFrames[key] = updateCss(keyFrames[key], str, styleObj, true, parseSelector);
             })
             count -= 1;
             keys = '';
