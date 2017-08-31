@@ -4,6 +4,12 @@
 .div{
 		color:brown;
 }
+.div:active{
+		border:2px solid black;
+}
+.div+.div{
+		background-image:url('/app/image.png');
+}
 .bounceBox{
 		-webkit-animation-name:bounce;
 }
@@ -45,4 +51,109 @@
 		transform:scale(1);
 	}
 
+}
+
+div{
+	background-color:red;
+	background:blue;
+}
+
+*{
+	margin:0;
+}
+
+[hidden]{
+	display:none;
+}
+
+template{
+	display:none;
+}
+
+audio:not([controls]){
+	display:none;
+	height:0;
+}
+
+::selection{
+	background-color:#b3d4fc;
+	color:#000;
+	text-shadow:none;
+}
+
+a{
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+a:hover{
+	outline-width:0;
+}
+
+[type=reset]{
+	-webkit-appearance:button;
+}
+
+[type=submit]{
+	-webkit-appearance:button;
+}
+
+button{
+	-webkit-appearance:button;
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+html [type=button]{
+	-webkit-appearance:button;
+}
+
+[type=checkbox]{
+	padding:0;
+}
+
+[type=radio]{
+	padding:0;
+}
+
+::-webkit-inner-spin-button{
+	height:auto;
+}
+
+::-webkit-outer-spin-button{
+	height:auto;
+}
+
+[tabindex]{
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+area{
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+input{
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+label{
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+select{
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+textarea{
+	-ms-touch-action:manipulation;
+	touch-action:manipulation;
+}
+
+[hidden][aria-hidden=false]:focus{
+	clip:auto;
 }

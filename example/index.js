@@ -14,4 +14,6 @@ data += parsedCss.getValue(['div', 'bounceBox', 'divChild']);
 
 data += parsedCss.getCommon();
 
+console.log(parsedCss.getCommon());
+
 fs.writeFileSync('./app.css', data, 'utf-8');
