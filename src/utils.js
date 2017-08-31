@@ -129,4 +129,15 @@ let isString = (data)=>{
     return data && typeof data === 'string' ? true : false;
 }
 
-export { isString, isObject, hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, isStyle, getSelector, updateObj, updateCss, updateSelectors, isUnwantedLine, hasKeyFrame };
+let classNameFilter = (data)=>{
+    let pieces = data.split('-');
+    let str = pieces.splice(0, 1)[0];
+    pieces.forEach(piece=>{
+        if (piece !== ''){
+            str += piece[0].toUpperCase() + piece.substr(1);
+        }
+    })
+    return str;
+}
+
+export { classNameFilter, isString, isObject, hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, isStyle, getSelector, updateObj, updateCss, updateSelectors, isUnwantedLine, hasKeyFrame };

@@ -1,4 +1,4 @@
-import { hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, updateObj, updateCss, getSelector } from './utils';
+import { hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, updateObj, updateCss, getSelector, classNameFilter } from './utils';
 
 let mediaQueries = {}
 let count = 0;
@@ -28,6 +28,7 @@ let mediaQueryFormator = (line, parseSelector)=>{
             let styleObj = parseStyle(style);
             keys = keys.split(',');
             keys.forEach(str=>{
+                str = classNameFilter(str);
                 subKeys.push(getSelector(str)[0]);
                 mediaQueries[key] = updateCss(mediaQueries[key], str, styleObj, true, parseSelector);
             })

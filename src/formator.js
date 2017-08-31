@@ -1,6 +1,6 @@
 import mediaQueryFormator from './mediaQueryFormator';
 import keyFrameFormator from './keyFrameFormator';
-import { hasMediaQuery, hasOpenCurly, hasCloseCurly, parseStyle, updateCss, isUnwantedLine, hasKeyFrame, getSelector } from './utils';
+import { hasMediaQuery, classNameFilter, hasOpenCurly, hasCloseCurly, parseStyle, updateCss, isUnwantedLine, hasKeyFrame, getSelector } from './utils';
 
 let formator = (css, parseSelector = true)=>{
     css = css.replace(/{/g, '{\n');
@@ -68,6 +68,7 @@ let formator = (css, parseSelector = true)=>{
                 let styleObj = parseStyle(style);
                 let keys = key.split(',');
                 keys.forEach(cName=>{
+                    cName = classNameFilter(cName);
                     if (styleObj['-webkit-animation-name']){
                         let [ name ] = getSelector(cName);
                         let val = styleObj['-webkit-animation-name'];

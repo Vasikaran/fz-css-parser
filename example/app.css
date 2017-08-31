@@ -1,4 +1,4 @@
-.div,.div-child{
+.div,.divChild{
 		background-color:red;
 }
 .div{
@@ -7,11 +7,11 @@
 .bounceBox{
 		-webkit-animation-name:bounce;
 }
-.div-child{
+.divChild{
 		color:white;
 }
 @media only screen and (max-width:64em){
-	.div-child{
+	.divChild{
 		background-color:gray;
 		color:black;
 	}
