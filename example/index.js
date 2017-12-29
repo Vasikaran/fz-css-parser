@@ -5,7 +5,7 @@ let css = fs.readFileSync('./sample.css').toString();
 
 let parsedCss = new cssParser(css);
 
-// fs.writeFileSync('./style.json', JSON.stringify(parsedCss.getAST()));
+fs.writeFileSync('./style.json', JSON.stringify(parsedCss.getAST()));
 
 
 let data = '';

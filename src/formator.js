@@ -2,7 +2,7 @@ import mediaQueryFormator from './mediaQueryFormator';
 import keyFrameFormator from './keyFrameFormator';
 import { hasMediaQuery, isStyle, classNameFilter, hasOpenCurly, hasCloseCurly, parseStyle, updateCss, isUnwantedLine, hasKeyFrame, getSelector } from './utils';
 
-let formator = (css, parseSelector = true)=>{
+let formator = (css, parseSelector = true, alignCamelCase = false)=>{
     css = css.replace(/{/g, '{\n');
     css = css.replace(/{/g, '{\n');
     css = css.replace(/}/g, '\n}\n');
@@ -68,7 +68,7 @@ let formator = (css, parseSelector = true)=>{
                 let styleObj = parseStyle(style);
                 let keys = key.split(',');
                 keys.forEach(cName=>{
-                    if (isStyle(cName)){
+                    if (isStyle(cName) && alignCamelCase){
                         cName = classNameFilter(cName);
                     }
                     if (styleObj['-webkit-animation-name']){

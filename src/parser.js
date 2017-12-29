@@ -4,9 +4,9 @@ import { isObject, isString } from './utils';
 import optimizer from './optimizer';
 
 export default class cssParser{
-    constructor(css){
+    constructor(css, alignCamelCase){
         let minifiedCss = minify(css);
-        this.ast = formator(minifiedCss);
+        this.ast = formator(minifiedCss, true, alignCamelCase);
     }
 
     getAST(){

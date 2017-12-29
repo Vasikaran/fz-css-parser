@@ -6,6 +6,10 @@
     color: red;
 }
 
+.parent .child:after{
+    background: red;
+}
+
 div{
     background: blue;
 }

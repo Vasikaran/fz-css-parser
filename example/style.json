@@ -95,7 +95,7 @@
         }
     },
     "__mediaKeys_": {
-        ".div-child": ["@media only screen and (max-width:64em)"],
+        ".divChild": ["@media only screen and (max-width:64em)"],
         ".div": [
             "@media only screen and (max-width:64em)",
             "@media only screen and (max-width:48em)"
@@ -110,7 +110,8 @@
             "+.div": { "background-image": "url('/app/image.png')" }
         }
     },
-    ".div-child": { "background-color": "red", "color": "white" },
+    ".divChild": { "background-color": "red", "color": "white" },
+    ".parent": { "__selectors": { " .child:after": { "background": "red" } } },
     ".breadcrumbs": {
         "__selectors": {
             " li": {
@@ -118,7 +119,7 @@
                 "color": "#888a88",
                 "text-transform": "uppercase"
             },
-            " li:not(:last-child):after": {
+            " li:not(:lastChild):after": {
                 "margin-right": ".4rem",
                 "margin-left": ".3rem",
                 "content": "' ⁄ '"
@@ -129,23 +130,23 @@
     ".pulseBox": { "-webkit-animation-name": "pulse" },
     ".radio": {
         "__selectors": {
-            " [type=radio]:checked+.radio__label .radio--faux:after": {
+            " [type=radio]:checked+.radio__label .radioFaux:after": {
                 "position": "absolute",
                 "top": "50%",
                 "left": "50%"
             },
-            " [type=radio]:checked~.radio--faux:after": {
+            " [type=radio]:checked~.radioFaux:after": {
                 "position": "absolute",
                 "top": "50%",
                 "left": "50%"
             },
-            " [type=radio]:disabled+.radio--faux": {
+            " [type=radio]:disabled+.radioFaux": {
                 "background-color": "#f6f6f6"
             },
-            " [type=radio]:disabled+.radio__label .radio--faux": {
+            " [type=radio]:disabled+.radio__label .radioFaux": {
                 "background-color": "#f6f6f6"
             },
-            " [type=radio]:disabled~.radio--faux": {
+            " [type=radio]:disabled~.radioFaux": {
                 "background-color": "#f6f6f6"
             }
         }
@@ -158,7 +159,7 @@
                 "white-space": "nowrap",
                 "min-width": "90px"
             },
-            ".div-child": { "background-color": "gray", "color": "black" }
+            ".divChild": { "background-color": "gray", "color": "black" }
         },
         "@media only screen and (max-width:48em)": {
             ".div": { "__selectors": { " h1": { "display": "none" } } },

@@ -1,6 +1,6 @@
 {
   "name": "fz-css-parser",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "for parse css",
   "main": "./lib/index.js",
   "scripts": {
